@@ -31,7 +31,7 @@
   </head>
   <body>
     <div class="container-scroller">
-   
+
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
@@ -120,7 +120,7 @@
               <span class="menu-title">Food Menu</span>
             </a>
           </li>
-          
+
 
           {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="/admin/chefs">
@@ -169,7 +169,7 @@
             </div>
           </li>
           -->
-      
+
           {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="/admin/reservation">
               <span class="menu-icon">
@@ -179,7 +179,7 @@
             </a>
           </li> --}}
           @if(Auth::user()->usertype == 1)
-          {{-- <li class="nav-item menu-items">
+          <li class="nav-item menu-items">
             <a class="nav-link" href="/admin/customize">
               <span class="menu-icon">
                 <i class="mdi mdi-settings"></i>
@@ -201,7 +201,7 @@
                 <li class="nav-item"> <a class="nav-link" href="/admin/banner/all">All Banners</a></li>
               </ul>
             </div>
-          </li> --}}
+          </li>
 
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin/show">
@@ -236,7 +236,7 @@
           </li>
 
           @endif
-          
+
 
           @if(Auth::user()->usertype != 2)
 
@@ -260,8 +260,8 @@
 
           @endif --}}
 
-     
-         
+
+
         </ul>
       </nav>
       <!-- partial -->
@@ -333,7 +333,7 @@
                   <i class="mdi mdi-email"></i>
                   <span class="count bg-success"></span>
                 </a>
-           
+
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
@@ -379,22 +379,22 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-       
-         
+
+
           @yield('container')
-          
-     
+
+
 
             </div>
-         
-           
-       
+
+
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © RMS  2022</span>
-         
+
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="/" target="_blank">Go to Client Section</a></span>
             </div>
           </footer>

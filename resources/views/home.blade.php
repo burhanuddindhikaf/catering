@@ -49,7 +49,7 @@
                     <div class="left-text-content">
                         <div class="section-heading">
                         @foreach($about_us as $a_us)
-                            <h6>About Us</h6>
+                            <h6>Tentang Kami</h6>
                             <h2>{{  $a_us->title  }}</h2>
                         </div>
                         <p>{{  $a_us->description  }}</p>
@@ -82,7 +82,7 @@
     <!-- ***** About Area Ends ***** -->
 
      <!-- ***** Menu Area Starts ***** -->
-     <section class="section" id="offers">
+     {{-- <section class="section" id="offers">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 offset-lg-4 text-center">
@@ -576,7 +576,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ***** Chefs Area Ends ***** -->
 <!-- ***** Menu Area Starts ***** -->
 <section class="section"  id="menu">
@@ -584,8 +584,8 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-heading" >
-                        <h6>Our Menu</h6>
-                        <h2>Our selection of cakes with quality taste</h2>
+                        <h6>Menu kami</h6>
+                        <h2>Menu Terbaik Kami</h2>
                     </div>
                 </div>
             </div>
@@ -740,15 +740,16 @@
                 <div class="col-lg-6 align-self-center">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>Contact Us</h6>
-                            <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
+                            <h6>Hubungi Kami</h6>
+                            <h2>Kami siap melayani Anda dengan sepenuh hati
+                            </h2>
                         </div>
-                        <p>Members of Midway Dine are always active to response your call.</p>
+                        <p>Untuk pemesanan atau informasi lebih lanjut, silakan hubungi kami</p>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
-                                    <h4>Phone Numbers</h4>
+                                    <h4>Nomor WhatsApp</h4>
                                     <span><a href="#">01824072334</a>
 									<br><a href="#">01554649446</a>
 									</span>

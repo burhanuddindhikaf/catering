@@ -54,17 +54,17 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/">Home</a></li>
-                            <li class="scroll-to-section"><a href="/#about">About</a></li>
+                            <li class="scroll-to-section"><a href="/">Beranda</a></li>
+                            <li class="scroll-to-section"><a href="/#about">Tentang Kami</a></li>
 
                             <li class="scroll-to-section"><a href="/menu">Menu</a></li>
 
                             {{-- <li class="scroll-to-section"><a href="/trace-my-order">Trace Order</a></li> --}}
 
-                            <li class="scroll-to-section"><a href="/my-order">My Order</a></li>
+                            <li class="scroll-to-section"><a href="/my-order">Pesanan Saya</a></li>
 
                             {{-- <li class="scroll-to-section"><a href="/#chefs">Chefs</a></li> --}}
-                            <li class="scroll-to-section"><a href="/#reservation">Contact Us</a></li>
+                            <li class="scroll-to-section"><a href="/#reservation">Hubungi Kami</a></li>
                             <li><a href="/cart"><i class="fa fa-shopping-cart"></i></a></li>
 
 
@@ -154,7 +154,7 @@
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
                             <ul class="social-icons">
-                                <li><a href="https://web.facebook.com/rahathosenmanik/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://web.facebook.com/rahathosenmanik/"><i class="fa fa-whatsapp"></i></a></li>
                                 <li><a href="https://twitter.com/rahathosenmanik"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://www.linkedin.com/in/rahathossenmanik/"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="https://www.instagram.com/rahathossenmanik/?hl=en"><i class="fa fa-instagram"></i></a></li>
@@ -168,8 +168,8 @@
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright Midway Dine
-							<br>Since 2022</p>
+                        <p>© Copyright Novi Catering
+							<br>Sejak 2022</p>
                     </div>
                 </div>
             </div>

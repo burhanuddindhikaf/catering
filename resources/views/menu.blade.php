@@ -77,15 +77,15 @@
             </span>
 
             <br>
-            <a href="/rate/{{ $product->id }}" style="color:blue;">Rate this</a>
+            <a href="/rate/{{ $product->id }}" style="color:blue;">Tambah rating</a>
 
             <br>
 
                         @if($product->available=="Stock")
                         <input type="number" name="number" style="width:50px;" id="myNumber" value="1">
-                        <button class="btn btn-success">Add to Cart</button>
+                        <button class="btn btn-success">Tambah ke keranjang</button>
                         @endif
-                        @if($product->available!="Stock") <p class="btn btn-danger">Out of Stock</p>
+                        @if($product->available!="Stock") <p class="btn btn-danger">Stok kosong</p>
                         @endif
                     </form>
                 </td>

@@ -5,29 +5,29 @@
     <br>
     @if(Session::has('wrong'))
     <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   <strong>Opps !</strong> {{Session::get('wrong')}}
 </div>
     @endif
     @if(Session::has('success'))
     <br>
     <div class="success">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   <strong>Congrats !</strong> {{Session::get('success')}}
 </div>
     <br>
     @endif
     <br>
-    
+
     <br>
     <br>
-    
+
 <table id="cart" class="table table-hover table-condensed container">
     <thead>
         <tr>
-            <th style="width:50%">Product</th>
-            <th style="text-align:center;width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
+            <th style="width:50%">Menu</th>
+            <th style="text-align:center;width:10%">Harga</th>
+            <th style="width:8%">Jumlah</th>
             <th style="width:22%" class="text-center">Subtotal</th>
             <th style="width:10%"></th>
         </tr>
@@ -38,11 +38,11 @@
             @php $total += $product['price'] * $product['quantity'] @endphp
             <tr>
                 <td>{{$product->name}}</td>
-                <td style="text-align:center">৳{{$product->price}}</td>
+                <td style="text-align:center">Rp.{{$product->price}}</td>
                 <td style="text-align:center">{{$product->quantity}}</td>
-                <td style="text-align:center">৳{{$product->subtotal}}</td>
+                <td style="text-align:center">Rp.{{$product->subtotal}}</td>
                 <td style="text-align:center" class="actions" data-th="">
-                    <form method="post" action="{{route('cart.destroy', $product)}}" onsubmit="return confirm('Sure?')">
+                    <form method="post" action="{{route('cart.destroy', $product)}}" onsubmit="return confirm('Anda Yakin?')">
                         @csrf
                         <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash">
                         </i></button>
@@ -50,37 +50,37 @@
                 </td>
             </tr>
         @endforeach
-    
-  
+
+
       @if($total_price!=0)
 
 
-            @foreach($extra_charge as $chrage)
+            {{-- @foreach($extra_charge as $chrage)
             <tr>
                 <td>{{  $chrage->name }}</td>
                 <td style="text-align:center"></td>
                 <td style="text-align:center"></td>
-                
-              
-                <td style="text-align:center">৳{{  $chrage->price }}</td>
 
 
-        
+                <td style="text-align:center">Rp.{{  $chrage->price }}</td>
+
+
+
                 </tr>
-            @endforeach
+            @endforeach --}}
 
 
 
       @endif
-        @php 
-        
+        @php
 
-        
+
+
         @endphp
         </tbody>
     <tfoot>
-        <form method="post" action="{{route('coupon/apply')}}">
-            @csrf    
+        {{-- <form method="post" action="{{route('coupon/apply')}}">
+            @csrf
 
             @if($total_price==0)
             <td colspan="3" class="text-right" ><strong>  <p style="margin-top:8px !important;">Coupon Code</p> </strong></td>
@@ -92,14 +92,14 @@
             <td>  <input type="text" name="code" class="form-control" id="exampleFormControlInput1" placeholder=""></td>
             <td> <button type="submit" class="btn btn-dark">Apply</button> </td>
             @endif
-</form>
+</form> --}}
         </tr>
         <tr>
-        @php 
-        
-        
+        @php
+
+
         $total = $total_price + $total_extra_charge;
-        
+
         Session::put('total',$total_price);
 
         if($total_price!=0)
@@ -112,22 +112,22 @@
 
 
 
-        
+
         @endphp
-       
-            <td colspan="5" class="text-right"><h5><strong>Total ৳{{ $without_discount_price }}</strong></h5></td>
+
+            <td colspan="5" class="text-right"><h5><strong>Total Rp.{{ $without_discount_price }}.00</strong></h5></td>
+        </tr>
+        {{-- <tr>
+
+            <td colspan="5" class="text-right"><h5><strong>Discount Rp.{{ $discount_price }}</strong></h5></td>
         </tr>
         <tr>
-  
-            <td colspan="5" class="text-right"><h5><strong>Discount ৳{{ $discount_price }}</strong></h5></td>
-        </tr>
-        <tr>
-      
-            <td colspan="5" class="text-right"><h3><strong>Total (With Discount) ৳{{ $total_price }}</strong></h3></td>
-        </tr>
+
+            <td colspan="5" class="text-right"><h3><strong>Total (With Discount) Rp.{{ $total_price }}</strong></h3></td>
+        </tr> --}}
         <tr>
             <td colspan="5" class="text-right">
-                <a href="{{ url('/menu') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                {{-- <a href="{{ url('/menu') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a> --}}
                 <form style="display:inline" method="post" action="{{route('cart.checkout', $total)}}">
                     @csrf
                     @if($total_price==0)
