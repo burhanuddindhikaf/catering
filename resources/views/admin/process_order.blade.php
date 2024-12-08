@@ -43,7 +43,7 @@
                             <th> Date </th>
                             <th> Invoice No </th>
                             <th> Customer Name </th>
-                            <th> Customer Phone</th>
+                            {{-- <th> Customer Phone</th> --}}
                         
                             <th> Shippping Address </th>
               
@@ -78,7 +78,7 @@
                             </td>
 
 
-                            <td>  {{  $user->phone }}</td>
+                            {{-- <td>  {{  $user->phone }}</td> --}}
                             <td> {{ $order->shipping_address }} </td>
                      
 

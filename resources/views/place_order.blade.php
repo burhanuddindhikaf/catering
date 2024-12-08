@@ -29,88 +29,63 @@
     </style>
 </head>
 <body class="bg-light">
-<div class="container">
-    <div class="py-5 text-center">
-        <h2>MidwayCafe</h2>
-
-      
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Your cart</span>
-            </h4>
-            <ul class="list-group mb-3">
-               
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (BDT)</span>
-                    <strong>{{ $total }}</strong>
-                </li>
-            </ul>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>MidwayCafe</h2>
         </div>
-        <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Shipping address</h4>
-            <form method="POST" action="{{url('confirm_place_order/'.$total)}}" class="needs-validation" novalidate>
-               
-            @csrf
-
-                <div class="mb-3">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St"
-                           value="93 B, New Eskaton Road" required>
-                    <div class="invalid-feedback">
-                        Please enter your shipping address.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                </div>
-
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                            <option value="">Choose...</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                        </select>
+    
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (IDR)</span>
+                        <strong>{{ $total }}</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Shipping address</h4>
+                <form method="POST" action="{{ url('confirm_place_order/'.$total) }}" 
+                      class="needs-validation" 
+                      novalidate enctype="multipart/form-data">
+                    @csrf
+    
+                    <div class="mb-3">
+                        <label for="address">alamat</label>
+                        <input type="text" class="form-control" name="address" id="address" 
+                               placeholder="1234 Main St" 
+                               value="93 B, New Eskaton Road" required>
                         <div class="invalid-feedback">
-                            Please select a valid country.
+                            Please enter your shipping address.
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                            <option value="">Choose...</option>
-                            <option value="Dhaka">Dhaka</option>
-                        </select>
+    
+                    <div class="mb-3">
+                        <label for="address2">catatan <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+    
+                    <!-- Bukti Transfer -->
+                    <div class="mb-3">
+                        <label for="bukti_transfer">Upload Bukti Transfer</label>
+                        <input type="file" class="form-control" name="bukti_transfer" id="bukti_transfer" required>
                         <div class="invalid-feedback">
-                            Please provide a valid state.
+                            tolong upload bukti transfer.
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
-                    </div>
-                </div>
-                <hr class="mb-4">
-              
-                <hr class="mb-4">
-                <button class="btn btn-primary" 
-                     
-                        endpoint="{{ url('/confirm_place_order') }}"> Confirm order
-                </button>
-            </form>
+    
+                    <hr class="mb-4">
+                    <button class="btn btn-primary" 
+                            endpoint="{{ url('/confirm_place_order') }}"> Confirm order
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
-
-   
-</div>
+    
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

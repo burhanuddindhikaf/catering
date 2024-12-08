@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
+                <div class="col-md-5 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Transaction History</h4>
@@ -99,38 +99,46 @@
 
                       <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                          <h6 class="mb-1">Total</h6>
+                          <h6 class="mb-1">penjualan bulan ini</h6>
                           <p class="text-muted mb-0"></p>
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                          <h6 class="font-weight-bold mb-0">৳{{   $total   }}</h6>
+                          <h6 class="font-weight-bold mb-0">Rp. {{   $salesThisMonth }}</h6>
+                        </div>
+                      </div>
+                      <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                        <div class="text-md-center text-xl-left">
+                          <h6 class="mb-1">penjualan bulan lalu</h6>
+                          <p class="text-muted mb-0"></p>
+                        </div>
+                        <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                          <h6 class="font-weight-bold mb-0">Rp. {{   $salesLastMonth }}</h6>
+                        </div>
+                      </div>
+                      <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                        <div class="text-md-center text-xl-left">
+                          <h6 class="mb-1">penjualan 2 bulan lalu</h6>
+                          <p class="text-muted mb-0"></p>
+                        </div>
+                        <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                          <h6 class="font-weight-bold mb-0">Rp. {{   $salesTwoMonthsAgo }}</h6>
                         </div>
                       </div>
 
                       <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                          <h6 class="mb-1" >Cash on Delivery</h6>
+                          <h6 class="mb-1" >total</h6>
                           <p class="text-muted mb-0"></p>
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                          <h6 class="font-weight-bold mb-0">৳{{   $cash_on_payment   }}</h6>
+                          <h6 class="font-weight-bold mb-0">Rp. {{   $salesThisMonth+$salesLastMonth+$salesTwoMonthsAgo   }}</h6>
                         </div>
                       </div>
 
-
-                      <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                        <div class="text-md-center text-xl-left">
-                          <h6 class="mb-1">Online Payment</h6>
-                          <p class="text-muted mb-0"></p>
-                        </div>
-                        <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                          <h6 class="font-weight-bold mb-0">৳{{  $online_payment  }}</h6>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 grid-margin stretch-card">
+                <div class="col-md-7 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex flex-row justify-content-between">
@@ -151,7 +159,7 @@
                           
                           @foreach($per_rate as $prod)
 
-                          @if($i>5)
+                          @if($i>6)
 
 
                           @break;
@@ -286,47 +294,54 @@
               
 @endsection()
 
+@php
+    use Carbon\Carbon;
+
+    // Mendapatkan tanggal bulan ini, bulan lalu, dan dua bulan lalu
+    $today = Carbon::now();
+    $lastMonth = $today->copy()->subMonth();
+    $twoMonthsAgo = $today->copy()->subMonths(2);
+
+    // Mendapatkan nama bulan
+    $monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $currentMonthName = $monthNames[$today->month - 1]; // Bulan ini
+    $lastMonthName = $monthNames[$lastMonth->month - 1]; // Bulan lalu
+    $twoMonthsAgoName = $monthNames[$twoMonthsAgo->month - 1]; // 2 bulan lalu
+@endphp
 
 
 <script type="text/javascript">
-
-
-
-
-
-
-window.onload = function () {
-
-
-
-
-var cash_pay_value = "<?php echo $cash_on_payment; ?>";
-var online_pay_value = "<?php echo $online_payment; ?>";
-
-console.log(cash_pay_value);
-console.log(online_pay_value);
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	theme: "dark2", // "light2", "dark1", "dark2"
-	animationEnabled: false, // change to true		
-	title:{
-		text: ""
-	},
-	data: [
-	{
-		// Change type to "bar", "area", "spline", "pie",etc.
-		type: "column",
-		dataPoints: [
-			{ label: "Cash on Delivery",  y: +cash_pay_value  },
-			{ label: "Online Payment", y: +online_pay_value  },
-		
-		]
-	}
-	]
-});
-chart.render();
-
-}
+  window.onload = function () {
+      // Mendapatkan nilai penjualan untuk bulan ini, bulan lalu, dan dua bulan lalu
+      var sales_this_month = "<?php echo $salesThisMonth; ?>";
+      var sales_last_month = "<?php echo $salesLastMonth; ?>";
+      var sales_two_months_ago = "<?php echo $salesTwoMonthsAgo; ?>";
+  
+      console.log(sales_this_month);
+      console.log(sales_last_month);
+      console.log(sales_two_months_ago);
+  
+      // Membuat chart dengan data yang telah disesuaikan
+      var chart = new CanvasJS.Chart("chartContainer", {
+          theme: "dark2", // "light2", "dark1", "dark2"
+          animationEnabled: true, // Mengaktifkan animasi
+          title: {
+              text: ""
+          },
+          data: [
+              {
+                  type: "column", // Tipe chart kolom
+                  dataPoints: [
+                    { label: "<?php echo $currentMonthName; ?>", y: +sales_this_month },
+                    { label: "<?php echo $lastMonthName; ?>", y: +sales_last_month },
+                    { label: "<?php echo $twoMonthsAgoName; ?>", y: +sales_two_months_ago }
+                  ]
+              }
+          ]
+      });
+  
+      chart.render();
+  }
 </script>
 
 

@@ -157,7 +157,9 @@ Route::get('/chef/edit/{id}', [AdminController::class, 'chef_edit'])->name('/che
 
 Route::post('/menu/edit/process/{id}', [AdminController::class, 'menu_edit_process'])->name('/menu/edit/process');
 Route::post('/edit/chef/process/{id}', [AdminController::class, 'chef_edit_process'])->name('/edit/chef/process');
+
 Route::post('/invoice/approve/{id}', [AdminController::class, 'invoice_approve'])->name('/invoice/approve');
+
 Route::get('/invoice/details/{id}', [AdminController::class, 'invoice_details'])->name('invoice/details');
 Route::get('/invoice/cancel-order/{id}', [AdminController::class, 'invoice_cancel'])->name('/invoice/cancel-order');
 

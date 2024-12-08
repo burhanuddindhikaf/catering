@@ -20,12 +20,12 @@
                             <th> Delivery Date & Time </th>
                             <th> Invoice No </th>
                             <th> Customer Name </th>
-                            <th> Customer Phone</th>
+                            {{-- <th> Customer Phone</th> --}}
                         
                             <th> Shippping Address </th>
               
                   
-                            <th> Payment Method </th>
+                            {{-- <th> Payment Method </th> --}}
                             <th> Action </th>
                           </tr>
                         </thead>
@@ -55,10 +55,10 @@
                             </td>
 
 
-                            <td>  {{  $user->phone }}</td>
+                            {{-- <td>  {{  $user->phone }}</td> --}}
                             <td> {{ $order->shipping_address }} </td>
                      
-                            <td> {{ $order->pay_method }} </td>
+                            {{-- <td> {{ $order->pay_method }} </td> --}}
 
                             <td>
 

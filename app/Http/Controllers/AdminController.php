@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Hash;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -453,88 +454,31 @@ class AdminController extends Controller
         
     }
 
-    public function invoice_approve(Request $req,$id)
-    {
+    public function invoice_approve($id)
+{
+    // Validasi apakah invoice ada
+    $products = DB::table('carts')->where('invoice_no', $id)->get();
 
-        $data=array();
-
-        $data['product_order']="approve";
-    
-       // return $req->time;
-
-        $time_set_up=strtotime($req->time);
-        $time_set_up=date("F j, Y, G:i:sa", $time_set_up);
-
-        $req->time=$time_set_up;
-       // return $req->time;
-        $data['delivery_time']=$req->time;
-
-
-        $details = [
-            'title' => 'Mail from RMS Admin',
-            'body' => 'Your order approved by RMS.Your order Invoice no - '.$id.' & Delivery Time (approximately) - '.$req->time,
-        ];
-
-        $products=DB::table('carts')->where('invoice_no',$id)->get();
-
-        foreach($products as $product)
-        {
-
-
-            $user_id=$product->user_id;
-            $status=$product->product_order;
-
-
-        }
-        
-        if($status!="approve")
-        {
-            $details = [
-                'title' => 'Mail from RMS Admin',
-                'body' => 'Your order Invoice no - '.$id.' Delivery Time (approximately) - '.$req->time,
-            ];
-
-            
-            $user=DB::table('users')->where('id',$user_id)->first();
-        
-            \Mail::to($user->email)->send(new \App\Mail\ApproveMail($details));
-
-
-            $update=DB::table('carts')->where('invoice_no',$id)->Update($data);
-
-
-            session()->flash('success','Order approved successfully !');
-            return back();
-
-
-        }
-        else
-        {
-
-            $details = [
-                'title' => 'Mail from RMS Admin',
-                'body' => 'Your order approved by RMS.Your order Invoice no - '.$id.' & Delivery Remaining Time (approximately) - '.$req->time,
-            ];
-
-            
-            $user=DB::table('users')->where('id',$user_id)->first();
-        
-            \Mail::to($user->email)->send(new \App\Mail\ApproveMail($details));
-
-
-            $update=DB::table('carts')->where('invoice_no',$id)->Update($data);
-
-
-            session()->flash('success','Order loaction updated successfully !');
-            return redirect('/order/location');
-
-
-        }
-
-
-
-
+    if ($products->isEmpty()) {
+        session()->flash('error', 'Invoice not found!');
+        return back();
     }
+
+    // Update status product_order menjadi "approve"
+    $update = DB::table('carts')
+        ->where('invoice_no', $id)
+        ->update(['product_order' => 'approve']);
+
+    if ($update) {
+        session()->flash('success', 'Order approved!');
+    } else {
+        session()->flash('error', 'Failed to approve order. Please try again.');
+    }
+
+    return back();
+}
+
+
     public function invoice_details($id)
     {
        
@@ -1848,6 +1792,7 @@ class AdminController extends Controller
 
 
     }
+    
 
 
 }

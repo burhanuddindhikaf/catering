@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+
+
 use DB;
 use PDF;
 use Hash;
+use Carbon\Carbon;
+
 
 
 use Session;
@@ -244,9 +248,32 @@ class HomeController extends Controller
 
             arsort($product_cart);
 
+            
+            $today = Carbon::now();
+            $lastMonth = (clone $today)->subMonth();
+            $twoMonthsAgo = (clone $today)->subMonths(2);
+            
+            // Ambil data total penjualan untuk bulan ini
+            $salesThisMonth = DB::table('carts')
+                ->whereYear('purchase_date', $today->year)
+                ->whereMonth('purchase_date', $today->month)
+                ->sum('price');
+            
+            // Ambil data total penjualan untuk bulan lalu
+            $salesLastMonth = DB::table('carts')
+                ->whereYear('purchase_date', $lastMonth->year)
+                ->whereMonth('purchase_date', $lastMonth->month)
+                ->sum('subtotal');
+            
+            // Ambil data total penjualan untuk dua bulan lalu
+            $salesTwoMonthsAgo = DB::table('carts')
+                ->whereYear('purchase_date', $twoMonthsAgo->year)
+                ->whereMonth('purchase_date', $twoMonthsAgo->month)
+                ->sum('subtotal');
 
 
-    		return view('admin.dashboard',compact('pending_order','product_cart','copy_cart','total','copy_product','per_rate','product','cash_on_payment','online_payment','customer','delivery_boy','admin','processing_order','cancel_order','complete_order'));
+
+    		return view('admin.dashboard',compact('pending_order','product_cart','copy_cart','total','copy_product','per_rate','product','cash_on_payment','online_payment','customer','delivery_boy','admin','processing_order','cancel_order','complete_order','salesThisMonth', 'salesLastMonth', 'salesTwoMonthsAgo'));
     	}
         else{
             
@@ -623,6 +650,6 @@ class HomeController extends Controller
 
 
     }
-  
+
 
 }
