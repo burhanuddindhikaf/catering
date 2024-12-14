@@ -1,7 +1,7 @@
 @extends('layout', ['title'=> 'Home'])
 
 @section('page-content')
-
+<div class="rating-page">
 <br><br>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +68,7 @@
 
 
 
-            <div id="rate" class="rate" style="margin-right:430px; !important">
+            <div id="rate" class="rate" style="margin-right:30px; !important">
 
                     <label id="star5" onclick="rate(5)" style="color: #FCA311;" ></label>
                     <label id="star4" onclick="rate(4)" style="color: #FCA311;"></label>
@@ -85,20 +85,23 @@
             </tr>
     
 </table>
+</div>
 @endsection
 <style>
 
 
 
 
-p{
+.rating-page p{
     font-family: Roboto;
-    font-size: 3rem;
+    font-size: 1rem;
     font-weight: 600;
     color: black;
+    line-height: 40px;
+
 }
 
-.center {
+.rating-page .center {
     width: 100vw;
     height: 40vh;
     display: flex;
@@ -109,26 +112,26 @@ p{
     
 }
 
-label {
+.rating-page label {
     float: right;
     font-size: 0;
     color: #E5E5E5;
     margin: 1vw;
 }
 
-label::before {
+.rating-page label::before {
     content: "\f005";
     font-family: 'Font Awesome 5 free';
     font-size: 8vh;
 }
 
-label:hover,  label:hover~label {
+.rating-page label:hover,  label:hover~label {
     color: #FCA311;
     transition: 0.8s;
     font-weight: 900;
 }
 
-.active {
+.rating-page .active {
     color: #FCA311;
     font-weight: 900;
 }

@@ -49,39 +49,37 @@
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Shipping address</h4>
                 <form method="POST" action="{{ url('confirm_place_order/'.$total) }}" 
-                      class="needs-validation" 
-                      novalidate enctype="multipart/form-data">
-                    @csrf
-    
-                    <div class="mb-3">
-                        <label for="address">alamat</label>
-                        <input type="text" class="form-control" name="address" id="address" 
-                               placeholder="1234 Main St" 
-                               value="93 B, New Eskaton Road" required>
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="address2">catatan <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                    </div>
-    
-                    <!-- Bukti Transfer -->
-                    <div class="mb-3">
-                        <label for="bukti_transfer">Upload Bukti Transfer</label>
-                        <input type="file" class="form-control" name="bukti_transfer" id="bukti_transfer" required>
-                        <div class="invalid-feedback">
-                            tolong upload bukti transfer.
-                        </div>
-                    </div>
-    
-                    <hr class="mb-4">
-                    <button class="btn btn-primary" 
-                            endpoint="{{ url('/confirm_place_order') }}"> Confirm order
-                    </button>
-                </form>
+      class="needs-validation" 
+      novalidate enctype="multipart/form-data">
+    @csrf
+
+    <div class="mb-3">
+        <label for="address">Alamat</label>
+        <input type="text" class="form-control" name="address" id="address" 
+               placeholder="1234 Main St" 
+               value="93 B, New Eskaton Road" required>
+        <div class="invalid-feedback">
+            Please enter your shipping address.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="address2">Catatan <span class="text-muted">(Optional)</span></label>
+        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+    </div>
+
+    <!-- Bukti Transfer -->
+    <div class="mb-3">
+        <label for="bukti_transfer">Upload Bukti Transfer</label>
+        <input type="file" class="form-control" name="bukti_transfer" id="bukti_transfer" required>
+        <div class="invalid-feedback">
+            Tolong upload bukti transfer.
+        </div>
+    </div>
+
+    <hr class="mb-4">
+    <button id="confirm-order-btn" class="btn btn-primary" disabled>Confirm order</button>
+</form>
             </div>
         </div>
     </div>
@@ -118,5 +116,19 @@
 
         window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
     })(window, document);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('.needs-validation');
+        const confirmOrderBtn = document.getElementById('confirm-order-btn');
+
+        // Validasi form setiap perubahan input
+        form.addEventListener('input', function () {
+            // Periksa apakah form valid
+            const isFormValid = form.checkValidity();
+            
+            // Aktifkan atau nonaktifkan tombol berdasarkan validasi form
+            confirmOrderBtn.disabled = !isFormValid;
+        });
+    });
 </script>
 </html>
