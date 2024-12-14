@@ -188,9 +188,29 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+{
+    // Validasi input untuk memastikan quantity adalah angka positif
+    $request->validate([
+        'quantity' => 'required|integer|min:1',
+    ]);
+
+    // Cari data keranjang di database berdasarkan ID
+    $cartItem = Cart::find($id);
+
+    if ($cartItem) {
+        // Perbarui quantity dan subtotal di database
+        $cartItem->quantity = $request->quantity;
+        $cartItem->subtotal = $cartItem->quantity * $cartItem->price;
+        $cartItem->save(); // Simpan perubahan ke database
+
+        return redirect()->route('cart')->with('success', 'Jumlah produk diperbarui!');
     }
+
+    // Jika item tidak ditemukan, kembalikan pesan error
+    return redirect()->route('cart')->with('error', 'Item tidak ditemukan!');
+}
+
+
 
     /**
      * Remove the specified resource from storage.
