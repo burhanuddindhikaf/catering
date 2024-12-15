@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 use DB;
 use PDF;
 use Hash;
@@ -24,8 +25,16 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $menu=DB::table('products')->where('catagory','regular')->get();
-
+        $menu = DB::table('products')
+        ->leftJoin('rates', 'products.id', '=', 'rates.product_id')
+        ->select(
+            'products.*',
+            DB::raw('COALESCE(AVG(rates.star_value), 0) as average_rating')
+        )
+        ->groupBy('products.id')
+        ->orderByDesc('average_rating')
+        ->limit(6) // Ambil 6 menu dengan rating tertinggi
+        ->get();
         $breakfast=DB::table('products')->where('catagory','special')->where('session',0)->get();
         $lunch=DB::table('products')->where('catagory','special')->where('session',1)->get();
         $dinner=DB::table('products')->where('catagory','special')->where('session',2)->get();
@@ -49,6 +58,7 @@ class HomeController extends Controller
 
         $about_us=DB::table('about_us')->get();
         $banners=DB::table('banners')->get();
+        
 
 
 
@@ -67,8 +77,17 @@ class HomeController extends Controller
         }
 
         
-        $menu=DB::table('products')->where('catagory','regular')->get();
-
+        $menu = DB::table('products')
+        ->leftJoin('rates', 'products.id', '=', 'rates.product_id')
+        ->select(
+            'products.*',
+            DB::raw('COALESCE(AVG(rates.star_value), 0) as average_rating')
+        )
+        ->groupBy('products.id')
+        ->orderByDesc('average_rating')
+        ->limit(6) // Ambil 6 menu dengan rating tertinggi
+        ->get();
+        
         $breakfast=DB::table('products')->where('catagory','special')->where('session',0)->get();
         $lunch=DB::table('products')->where('catagory','special')->where('session',1)->get();
         $dinner=DB::table('products')->where('catagory','special')->where('session',2)->get();
@@ -650,6 +669,9 @@ class HomeController extends Controller
 
 
     }
+
+
+
 
 
 }

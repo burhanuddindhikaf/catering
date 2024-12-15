@@ -4,7 +4,7 @@
 
     <!-- ***** Main Banner Area Start ***** -->
     <div id="top">
-        <div class="container-fluid">
+        <div class="">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="left-content">
@@ -38,6 +38,14 @@
                 </div>
             </div>
         </div>
+        <style>
+            @media (max-width: 522px) {
+  h4 {
+    display: none;
+  }
+}
+
+        </style>
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
@@ -579,119 +587,77 @@
     </section> --}}
     <!-- ***** Chefs Area Ends ***** -->
 <!-- ***** Menu Area Starts ***** -->
-<section class="section"  id="menu">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="section-heading" >
-                        <h6>Menu kami</h6>
-                        <h2>Menu Terbaik Kami</h2>
-                    </div>
+<section class="section" id="menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="section-heading">
+                    <h6>Menu kami</h6>
+                    <h2>Menu Terbaik Kami</h2>
                 </div>
             </div>
         </div>
-        <div class="menu-item-carousel">
-            <div class="col-lg-12">
-                <div class="owl-menu-item owl-carousel" >
-
-                    @foreach($menu as $product)
-
-                    <div class="item">
-
-                    <?php
-                        $img=$product->image;
-                    ?>
-                        <div class='card' style="background-image: url({{asset('assets/images/'.$img)}})">
-
-                            <div class="price"><h6>Rp.{{ $product->price }}</h6>
-                            @if($product->available!="Stock")
+    </div>
+    <div class="menu-item-carousel">
+        <div class="col-lg-12">
+            <div class="owl-menu-item owl-carousel">
+                @foreach($menu as $product)
+                <div class="item">
+                    <div class='card' style="background-image: url({{ asset('assets/images/'.$product->image) }})">
+                        <div class="price">
+                            <h6>Rp.{{ $product->price }}</h6>
+                            @if($product->available != "Stock")
                             <h4 style="">Out Of Stock</h4>
-
                             @endif
-
                         </div>
-                        <?php
+                        <div class='info'>
+                            <h1 class='title'>{{ $product->name }}</h1>
+                            <p class='description'>{{ $product->description }}</p>
+                            <div class="main-text-button">
+                                <div class="scroll-to-section">
+                                    <span class="product_rating">
+                                        @php
+                                        $whole = floor($product->average_rating); // Bagian bulat dari rating
+                                        $fraction = $product->average_rating - $whole; // Bagian desimal
+                                        @endphp
 
+                                        @for($i = 1; $i <= $whole; $i++)
+                                        <i class="fa fa-star"></i>
+                                        @endfor
 
-                            $total_rate=DB::table('rates')->where('product_id',$product->id)
-                            ->sum('star_value');
+                                        @if($fraction != 0)
+                                        <i class="fa fa-star-half"></i>
+                                        @endif
 
-
-                            $total_voter=DB::table('rates')->where('product_id',$product->id)
-                            ->count();
-
-                            if($total_voter>0)
-                            {
-
-                                $per_rate=$total_rate/$total_voter;
-
-                            }
-                            else
-                            {
-
-                                $per_rate=0;
-
-
-                            }
-
-                            $per_rate=number_format($per_rate, 1);
-
-
-                            $whole = floor($per_rate);      // 1
-                            $fraction = $per_rate - $whole
-
-                        ?>
-                            <div class='info'>
-                              <h1 class='title'>{{ $product->name }}</h1>
-                              <p class='description'>{{ $product->description  }}</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section" >
-                                  <span class="product_rating">
-                                  @for($i=1;$i<=$whole;$i++)
-
-                                    <i class="fa fa-star "></i>
-
-                                    @endfor
-
-                                    @if($fraction!=0)
-
-                                    <i class="fa fa-star-half"></i>
-
+                                        <span class="rating_avg">({{ number_format($product->average_rating, 1) }})</span>
+                                    </span>
+                                    <br>
+                                    <a href="/rate/{{ $product->id }}" style="color:blue;">tambah rating</a>
+                                    <p>Quantity: </p>
+                                    @if($product->available == "Stock")
+                                    <form method="post" action="{{ route('cart.store', $product->id) }}">
+                                        @csrf
+                                        <input type="number" name="number" style="width:50px;" id="myNumber" value="1">
+                                        <input type="submit" class="btn btn-success" value="Add Chart">
+                                    </form>
+                                    @else
+                                    <form method="post" action="{{ route('cart.store', $product->id) }}">
+                                        @csrf
+                                        <input type="number" name="number" style="width:50px;" id="myNumber" value="1">
+                                        <input type="submit" class="btn btn-success" disabled value="Add Chart">
+                                    </form>
                                     @endif
-
-
-                                    <span class="rating_avg">({{  $per_rate}})</span>
-            </span>
-      <br>
-                                   <a href="/rate/{{ $product->id }}" style="color:blue;">Rate this</a>
-                                  <p>Quantity: </p>
-                                @if($product->available=="Stock")
-                                  <form method="post" action="{{route('cart.store',$product->id)}}">
-                                     @csrf
-                                  <input type="number" name="number" style="width:50px;" id="myNumber" value="1">
-                                    <input type="submit" class="btn btn-success" value="Add Chart">
-                                  </form>
-                                @endif
-
-                                @if($product->available!="Stock")
-                                  <form method="post" action="{{route('cart.store',$product->id)}}">
-                                     @csrf
-                                  <input type="number" name="number" style="width:50px;" id="myNumber" value="1">
-                                    <input type="submit" class="btn btn-success" disabled value="Add Chart">
-                                  </form>
-                                @endif
                                 </div>
-                              </div>
-
                             </div>
                         </div>
                     </div>
-
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
     <!-- ***** Menu Area Ends ***** -->
 
     <!-- ***** Chefs Area Starts ***** -->

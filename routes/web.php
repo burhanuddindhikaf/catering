@@ -66,6 +66,9 @@ Route::get("/cart", [CartController::class, 'index'])->name('cart');
 
 Route::post('/menu/{product}', [CartController::class, 'store'])->name('cart.store');
 Route::post('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+Route::put('/cart/{product}', [CartController::class, 'update'])->name('cart.update');
+
 Route::post('/mails/shipped/{total}', [ShipmentController::class, 'place_order'])->name('mails.shipped');
 Route::post('/confirm_place_order/{total}', [ShipmentController::class, 'send'])->name('confirm_place_order');
 

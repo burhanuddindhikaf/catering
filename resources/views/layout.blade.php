@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
   <head>
 
@@ -24,6 +24,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css')}}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <script src="{{ asset('assets/js/angular.min.js')}}"></script>
     <script src="{{ asset('assets/js/bKash-checkout.js')}}"></script>
     <script src="{{ asset('assets/js/bKash-checkout-sandbox.js')}}"></script>
@@ -46,100 +48,192 @@
     <!-- ***** Header Area Start ***** -->
     <header class="header-area" style="z-index:1000">
         <div class="container">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="{{url('home')}}" class="logo">
-                            <img width="100px" src="{{ asset('assets/images/logo.png')}}">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="/">Beranda</a></li>
-                            <li class="scroll-to-section"><a href="/#about">Tentang Kami</a></li>
+            <nav>
+                <!-- Checkbox for toggling menu -->
+                <input type="checkbox" id="check">
+                <!-- Menu icon -->
+                <label for="check" class="checkbtn">
+                  <i class="fas fa-bars"></i>
+                </label>
+                <!-- Site logo -->
+                <label class="logo"><img width="100px" src="{{ asset('assets/images/logo.png')}}"></label>
+                <!-- Navigation links -->
+                <ul >
+                    <li class=""><a href="/">Beranda</a></li>
+                    <li class=""><a href="/#about">Tentang Kami</a></li>
 
-                            <li class="scroll-to-section"><a href="/menu">Menu</a></li>
+                    <li class=""><a href="/menu">Menu</a></li>
 
-                            {{-- <li class="scroll-to-section"><a href="/trace-my-order">Trace Order</a></li> --}}
+                    {{-- <li class=""><a href="/trace-my-order">Trace Order</a></li> --}}
 
-                            <li class="scroll-to-section"><a href="/my-order">Pesanan Saya</a></li>
+                    <li class=""><a href="/my-order">Pesanan Saya</a></li>
 
-                            {{-- <li class="scroll-to-section"><a href="/#chefs">Chefs</a></li> --}}
-                            <li class="scroll-to-section"><a href="/#reservation">Hubungi Kami</a></li>
-                            <li><a href="/cart"><i class="fa fa-shopping-cart"></i></a></li>
-
-
-                            <?php
-
-                                if(Auth::user())
-                                {
-
-                                    $cart_amount=DB::table('carts')->where('user_id',Auth::user()->id)->where('product_order','no')->count();
+                    {{-- <li class=""><a href="/#chefs">Chefs</a></li> --}}
+                    <li class=""><a href="/#reservation">Hubungi Kami</a></li>
+                    <li>
+                        <div>
+                        <a href="/cart"><i class="fa fa-shopping-cart"></i></a>
 
 
-                                }
-                                else
-                                {
+                    <?php
 
-                                    $cart_amount=0;
+                        if(Auth::user())
+                        {
 
-                                }
-
-
-                            ?>
+                            $cart_amount=DB::table('carts')->where('user_id',Auth::user()->id)->where('product_order','no')->count();
 
 
-                            <span class='badge badge-warning' id='lblCartCount'> {{ $cart_amount }} </span>
+                        }
+                        else
+                        {
 
-                            <style>
+                            $cart_amount=0;
+
+                        }
 
 
-                                .badge {
-                                padding-left: 9px;
-                                padding-right: 9px;
-                                padding-top:10px;
-                                -webkit-border-radius: 9px;
-                                -moz-border-radius: 9px;
-                                border-radius: 9px;
-                                height:16px;
-                                text-align:center;
-                                }
+                    ?>
 
-                                .label-warning[href],
-                                .badge-warning[href] {
-                                background-color: #c67605;
-                                }
-                                #lblCartCount {
-                                    font-size: 12px;
-                                    background: #ff0000;
-                                    color: #fff;
-                                    padding: 0 5px;
-                                    vertical-align: top;
-                                    margin-left: -10px;
-                                }
-                            </style>
-                            <li>
-                                @if (Route::has('login'))
-                                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                    @auth
-                                        <li style="margin-top:-13px;">
-                                            <x-app-layout> </x-app-layout>
-                                        </li>
-                                    @else
-                                      <li>
-                                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                                      </li>
-                                        @if (Route::has('register'))
-                                            <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a> </li>
-                                        @endif
-                                    @endauth
-                                </div>
+
+                    <span class='badge badge-warning' id='lblCartCount'> {{ $cart_amount }} </span>
+                </div></li>
+                    <li>
+                        @if (Route::has('login'))
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block ">
+                            @auth
+                                <li style="margin-top:-13px;">
+                                    <x-app-layout> </x-app-layout>
+                                </li>
+                            @else
+                              <li>
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                              </li>
+                                @if (Route::has('register'))
+                                    <li><a href="{{ route('register') }}" class=" text-sm text-gray-700 underline">Register</a> </li>
                                 @endif
-                            </li>
-                        </ul>
-
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                            @endauth
+                        </div>
+                        @endif
+                    </li>
+                </ul>
+              </nav>
         </div>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+nav {
+  height: 90px;
+  width: 100%;
+  justify-content: space-between;
+}
+label.logo {
+  color: black;
+  font-size: 25px;
+  line-height: 80px;
+  padding: 0 30px;
+  font-weight: bold;
+}
+nav ul {
+  float: right;
+  margin-right: 20px;
+  z-index: 1000;
+}
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+nav ul li a {
+  color: black;
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+a.active,
+a:hover {
+  background: #1b9bff;
+  transition: .5s;
+}
+.checkbtn {
+  font-size: 22px;
+  color: black;
+  float: right;
+  line-height: 80px;
+  margin-right: 30px;
+  cursor: pointer;
+  display: none;
+}
+#check {
+  display: none;
+}
+
+#top {
+    padding-top: 10px;
+    background-color: #fb5849
+}
+
+/* @media (max-width: 1200px) {
+  label.logo {
+    padding-left: 30px;
+  }
+  nav ul li a {
+    font-size: 16px;
+  }
+} */
+/* Responsive media query code for small screen */
+@media (max-width: 1024px) {
+  .checkbtn {
+    display: block;
+  }
+  label.logo {
+    font-size: 22px;
+  }
+  ul {
+    position: absolute;
+ /* Sesuaikan lebar menu */
+     /* Biarkan menu mengambil tinggi penuh layar */
+    background: #fb5849;
+    top: 80px; /* Menu dimulai dari atas layar */
+    left: -120%; /* Posisi awal di luar layar */
+    text-align: left; /* Teks rata kiri */
+    padding: 20px; /* Tambahkan padding agar terlihat rapi */
+    transition: all 0.5s ease;
+  }
+  nav ul li {
+    display: block;
+    margin: 10px 0; /* Beri jarak antar item */
+    line-height: 30px;
+  }
+  nav ul li a {
+    font-size: 20px;
+    color: white;
+  }
+  a:hover,
+  a.active {
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked~ul {
+    left: 0; /* Tampilkan menu di kiri layar */
+  }
+}
+
+section {
+  background: url("bg.jpg") no-repeat;
+  background-size: cover;
+  height: calc(100vh - 80px);
+}
+        </style>
     </header>
     <!-- ***** Header Area End ***** -->
 
