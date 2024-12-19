@@ -203,7 +203,7 @@ a:hover {
  /* Sesuaikan lebar menu */
      /* Biarkan menu mengambil tinggi penuh layar */
     background: #fb5849;
-    top: 80px; /* Menu dimulai dari atas layar */
+    top: 90px; /* Menu dimulai dari atas layar */
     left: -120%; /* Posisi awal di luar layar */
     text-align: left; /* Teks rata kiri */
     padding: 20px; /* Tambahkan padding agar terlihat rapi */

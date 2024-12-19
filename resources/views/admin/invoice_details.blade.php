@@ -138,46 +138,14 @@
 
                         @endforeach
 
-                        @foreach($extra_charge as $charge)
-                          <tr>
-                           
-                      
-                            <td> {{ $charge->name }} </td>
-                      
-                           <td>
+                        
 
-                           </td>
-                           <td></td>
-
-
-                            <td>  {{  $charge->price }}</td>
-                      
-                          </tr>
-
-                        @endforeach
+                        
 
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>Total </td>
-                            <td class="">  Rp. {{  $wihout_discount_price }}</td>                   
-                    
-                    
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Discount </td>
-                            <td class="">  Rp. {{  $discount_price }}</td>                   
-                    
-                    
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><h3>Total (With Discount)</h3> </td>
+                            <td><h3>Total </h3> </td>
                             <td class=""><h3>  Rp. {{  $total_price }} </h3></td>                   
                     
                     

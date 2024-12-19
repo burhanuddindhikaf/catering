@@ -902,6 +902,12 @@ ul.slick-dots {
 .slick-list:focus {
     outline: none;
 }
+
+/* Sembunyikan hanya scrollbar horizontal */
+::-webkit-scrollbar {
+    display: none; /* Hilangkan hanya scrollbar horizontal */
+}
+
 .slick-list.dragging {
     cursor: hand;
 }

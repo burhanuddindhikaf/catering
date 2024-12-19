@@ -41,8 +41,8 @@
                 </h4>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (IDR)</span>
-                        <strong>{{ $total }}</strong>
+                        <span>Total</span>
+                        <strong>{{ "Rp.$total" }}</strong>
                     </li>
                 </ul>
             </div>
@@ -56,8 +56,8 @@
     <div class="mb-3">
         <label for="address">Alamat</label>
         <input type="text" class="form-control" name="address" id="address" 
-               placeholder="1234 Main St" 
-               value="93 B, New Eskaton Road" required>
+               placeholder="alamat" 
+                required>
         <div class="invalid-feedback">
             Please enter your shipping address.
         </div>
@@ -65,7 +65,7 @@
 
     <div class="mb-3">
         <label for="address2">Catatan <span class="text-muted">(Optional)</span></label>
-        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+        <input type="text" class="form-control" id="address2" placeholder="rumah warna hijau">
     </div>
 
     <!-- Bukti Transfer -->

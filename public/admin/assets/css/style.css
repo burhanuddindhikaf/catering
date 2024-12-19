@@ -7497,7 +7497,8 @@ body {
   line-height: 1.5;
   color: #ffffff;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff; 
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -7890,7 +7891,8 @@ pre {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto; 
+}
 
 @media (min-width: 576px) {
   .container, .container-sm {
