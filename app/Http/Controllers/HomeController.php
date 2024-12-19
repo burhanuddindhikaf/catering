@@ -267,7 +267,17 @@ class HomeController extends Controller
 
             arsort($product_cart);
 
-            
+
+    // Mendapatkan tanggal bulan ini, bulan lalu, dan dua bulan lalu
+    $today = Carbon::now();
+    $lastMonth = $today->copy()->subMonth();
+    $twoMonthsAgo = $today->copy()->subMonths(2);
+
+    // Mendapatkan nama bulan
+    $monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $currentMonthName = $monthNames[$today->month - 1]; // Bulan ini
+    $lastMonthName = $monthNames[$lastMonth->month - 1]; // Bulan lalu
+    $twoMonthsAgoName = $monthNames[$twoMonthsAgo->month - 1]; // 2 bulan lalu
             $today = Carbon::now();
             $lastMonth = (clone $today)->subMonth();
             $twoMonthsAgo = (clone $today)->subMonths(2);
@@ -292,7 +302,7 @@ class HomeController extends Controller
 
 
 
-    		return view('admin.dashboard',compact('pending_order','product_cart','copy_cart','total','copy_product','per_rate','product','cash_on_payment','online_payment','customer','delivery_boy','admin','processing_order','cancel_order','complete_order','salesThisMonth', 'salesLastMonth', 'salesTwoMonthsAgo'));
+    		return view('admin.dashboard',compact('currentMonthName','lastMonthName','twoMonthsAgoName','pending_order','product_cart','copy_cart','total','copy_product','per_rate','product','cash_on_payment','online_payment','customer','delivery_boy','admin','processing_order','cancel_order','complete_order','salesThisMonth', 'salesLastMonth', 'salesTwoMonthsAgo'));
     	}
         else{
             
@@ -361,11 +371,6 @@ class HomeController extends Controller
 
         $pdf = PDF::loadView('mails.Reserve', $data);
   
-        \Mail::send('mails.Reserve', $data, function($message)use($data, $pdf) {
-            $message->to(Auth::user()->email,Auth::user()->email)
-                    ->subject($data["title"])
-                    ->attachData($pdf->output(), "Reservation Copy.pdf");
-        });
        
 
 

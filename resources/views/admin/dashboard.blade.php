@@ -99,7 +99,7 @@
 
                       <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                          <h6 class="mb-1">penjualan bulan ini</h6>
+                          <h6 class="mb-1">penjualan bulan {{ $currentMonthName }}</h6>
                           <p class="text-muted mb-0"></p>
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -108,7 +108,7 @@
                       </div>
                       <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                          <h6 class="mb-1">penjualan bulan lalu</h6>
+                          <h6 class="mb-1">penjualan bulan {{ $lastMonthName }}</h6>
                           <p class="text-muted mb-0"></p>
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -117,7 +117,7 @@
                       </div>
                       <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                         <div class="text-md-center text-xl-left">
-                          <h6 class="mb-1">penjualan 2 bulan lalu</h6>
+                          <h6 class="mb-1">penjualan bulan {{ $twoMonthsAgoName }}</h6>
                           <p class="text-muted mb-0"></p>
                         </div>
                         <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -293,21 +293,6 @@
               </div>
               
 @endsection()
-
-@php
-    use Carbon\Carbon;
-
-    // Mendapatkan tanggal bulan ini, bulan lalu, dan dua bulan lalu
-    $today = Carbon::now();
-    $lastMonth = $today->copy()->subMonth();
-    $twoMonthsAgo = $today->copy()->subMonths(2);
-
-    // Mendapatkan nama bulan
-    $monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    $currentMonthName = $monthNames[$today->month - 1]; // Bulan ini
-    $lastMonthName = $monthNames[$lastMonth->month - 1]; // Bulan lalu
-    $twoMonthsAgoName = $monthNames[$twoMonthsAgo->month - 1]; // 2 bulan lalu
-@endphp
 
 
 <script type="text/javascript">

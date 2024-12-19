@@ -45,7 +45,7 @@
 
                 
 
-                      <div class="form-group">
+                      <div class="form-group d-none">
                         <label for="exampleSelectGender">Type</label>
                         <select class="form-control" name="type" id="exampleSelectGender">
                           <option value="1">Super Admin</option>
@@ -79,7 +79,7 @@
                   
                     
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
-                      <button class="btn btn-dark">Cancel</button>
+                      <a href="/admin/show" class="btn btn-dark">Cancel</a>
                     </form>
                   </div>
                 </div>

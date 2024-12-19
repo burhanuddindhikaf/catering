@@ -73,7 +73,7 @@
                   
                     
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
-                      <button class="btn btn-dark">Cancel</button>
+                      <a href="/admin/food-menu" class="btn btn-dark">Cancel</a>
                     </form>
                   </div>
                 </div>

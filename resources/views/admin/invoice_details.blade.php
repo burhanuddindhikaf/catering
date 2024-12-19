@@ -138,7 +138,23 @@
 
                         @endforeach
 
-                        
+                        {{-- @foreach($extra_charge as $charge)
+                          <tr>
+                           
+                      
+                            <td> {{ $charge->name }} </td>
+                      
+                           <td>
+
+                           </td>
+                           <td></td>
+
+
+                            <td>  {{  $charge->price }}</td>
+                      
+                          </tr>
+
+                        @endforeach --}}
 
                         
 

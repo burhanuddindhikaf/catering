@@ -346,11 +346,6 @@ class SslCommerzPaymentController extends Controller
       if($carts)
       {
 
-        \Mail::send('mails..PayConfirmMail', $data, function($message)use($data, $pdf) {
-            $message->to(Auth::user()->email,Auth::user()->email)
-                    ->subject($data["title"])
-                    ->attachData($pdf->output(), "Payment Copy.pdf");
-        });
 
 
 

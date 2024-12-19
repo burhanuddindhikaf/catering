@@ -54,7 +54,6 @@ class ShipmentController extends Controller
  
         // Ship the order...
  
-        Mail::to($request->user())->send(new OrderShipped($order));
     }
     public function place_order($total)
     {
