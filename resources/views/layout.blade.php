@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <title>Midway Dine - Your Favourite Foods</title>
+    <title>Novi Catering</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css')}}">
@@ -247,12 +247,12 @@ section {
             <div class="row">
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
-                            <ul class="social-icons">
+                            {{-- <ul class="social-icons">
                                 <li><a href="https://web.facebook.com/rahathosenmanik/"><i class="fa fa-whatsapp"></i></a></li>
                                 <li><a href="https://twitter.com/rahathosenmanik"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://www.linkedin.com/in/rahathossenmanik/"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="https://www.instagram.com/rahathossenmanik/?hl=en"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                            </ul> --}}
                     </div>
                 </div>
                 <div class="col-lg-4">
