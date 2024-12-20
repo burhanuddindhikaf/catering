@@ -560,7 +560,6 @@ class AdminController extends Controller
         }
         $user=DB::table('users')->where('id',$user_id)->first();
        
-        \Mail::to($user->email)->send(new \App\Mail\ApproveMail($details));
 
 
         $update=DB::table('carts')->where('invoice_no',$id)->Update($data);
@@ -860,7 +859,6 @@ class AdminController extends Controller
 
 
     
-        \Mail::to($req->email)->send(new \App\Mail\UserAddedMail($details));
 
 
         session()->flash('success','Admin added successfully !');
@@ -889,7 +887,6 @@ class AdminController extends Controller
 
 
     
-        \Mail::to(Auth::user()->email)->send(new \App\Mail\UserAddedMail($details));
 
         $delete=DB::table('users')->where('id',$id)->delete();
 
@@ -1042,7 +1039,6 @@ class AdminController extends Controller
             }
           
        
-            \Mail::to($req->email)->send(new \App\Mail\UserAddedMail($details));
     
     
             session()->flash('success','Admin updated successfully !');
@@ -1164,7 +1160,6 @@ class AdminController extends Controller
 
 
     
-        \Mail::to($req->email)->send(new \App\Mail\UserAddedMail($details));
 
 
         session()->flash('success','Delivery Boy added successfully !');
@@ -1185,7 +1180,6 @@ class AdminController extends Controller
 
 
     
-        \Mail::to(Auth::user()->email)->send(new \App\Mail\UserAddedMail($details));
 
         $delete=DB::table('users')->where('id',$id)->delete();
 
@@ -1309,7 +1303,6 @@ class AdminController extends Controller
             }
           
        
-            \Mail::to($req->email)->send(new \App\Mail\UserAddedMail($details));
     
     
             session()->flash('success','Delivery Boy updated successfully !');

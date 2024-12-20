@@ -105,10 +105,10 @@
 
                 <br><br>
 <p></p>
+<a href="/edit/rate/{{ $products->id }}" style="color:green;padding-top:10px !important;">,<b>Edit Rating</b></a>
 <p></p>
-                <a href="/edit/rate/{{ $products->id }}" style="color:green;padding-top:50px !important;">,<b>Edit Rating</b></a>
 
-                <a href="/delete/rate/" style="color:red;margin-left:20px;padding-top:50px !important;"><b>Delete Rating</b></a>
+                <a href="/delete/rate/" style="color:red;padding-top:10px !important;"><b>Delete Rating</b></a>
             
 
                 

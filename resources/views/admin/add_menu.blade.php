@@ -42,7 +42,7 @@
                         <label for="exampleInputPassword4">Price</label>
                         <input type="number" name="price" class="form-control" id="exampleInputPassword4">
                       </div>
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                         <label for="exampleSelectGender">Catagory</label>
                         <select class="form-control" name="catagory" id="exampleSelectGender">
                           <option value="regular">Regular</option>
@@ -56,7 +56,7 @@
                           <option value="1">Lunch</option>
                           <option value="2">Dinner</option>
                         </select>
-                      </div>
+                      </div> --}}
 
                       <div class="form-group">
                         <label for="exampleSelectGender">Available</label>
@@ -73,7 +73,7 @@
                   
                     
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
-                      <button class="btn btn-dark">Cancel</button>
+                      <a href="/admin/food-menu" class="btn btn-dark">Cancel</a>
                     </form>
                   </div>
                 </div>

@@ -44,7 +44,7 @@
                         <label for="exampleInputPassword4">Price</label>
                         <input type="number" name="price" value="{{ $product->price }}" class="form-control" id="exampleInputPassword4">
                       </div>
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                         <label for="exampleSelectGender">Catagory</label>
                         <select class="form-control" name="catagory" id="exampleSelectGender">
                           <option value="regular" @php if($product->catagory=="regular"){ echo"selected"; }   @endphp>Regular</option>
@@ -58,7 +58,7 @@
                           <option value="1" @php if($product->session=="1"){ echo"selected"; }   @endphp>Lunch</option>
                           <option value="2" @php if($product->session=="2"){ echo"selected"; }   @endphp>Dinner</option>
                         </select>
-                      </div>
+                      </div> --}}
 
                       <div class="form-group">
                         <label for="exampleSelectGender">Available</label>
@@ -75,7 +75,7 @@
                   
                     
                       <button type="submit" class="btn btn-primary me-2">Update</button>
-                      <button class="btn btn-dark">Cancel</button>
+                      <a href="/admin/food-menu" class="btn btn-dark">Cancel</a>
                     </form>
                   </div>
                 </div>

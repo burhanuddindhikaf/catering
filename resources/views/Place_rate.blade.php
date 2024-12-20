@@ -40,14 +40,7 @@
 <body>
   <div class="card" style="position: relative; width: 300px; margin: 50px auto; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
       <!-- Tombol kembali -->
-      <a href="javascript:history.back()" 
-         style="position: absolute; top: 10px; left: 10px; 
-                text-decoration: none; font-size: 14px; 
-                padding: 5px 15px; background: #f8f9fa; 
-                color: #000; border-radius: 5px; 
-                border: 1px">
-          &#8592;
-      </a>
+     
 
       <!-- Konten card -->
       <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
@@ -55,8 +48,27 @@
       </div>
       <h1>Success</h1>
       <p>Thank you! <br />We received your rating</p>
+      <br>
+      <br>
+      <a href="/" class="back-to-home">Back to Home</a>
+
   </div>
 </body>
+<style>
+  .card {
+    position: relative; /* Menambahkan relative positioning untuk card */
+    padding: 20px;
+    text-align: center;
 
+  }
+
+  .back-to-home {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+  }
+
+</style>
   
 </html>

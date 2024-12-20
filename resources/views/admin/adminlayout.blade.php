@@ -41,7 +41,7 @@
         @if(Auth::user()->usertype == 2)
           <a class="sidebar-brand brand-logo" href="/redirects" style="color:white;text-decoration:none;">User Panel</a>
         @endif
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{asset('admin/assets//images/logo-mini.svg')}}" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/redirects"><img src="{{asset('admin/assets//images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -145,8 +145,8 @@
                 <li class="nav-item"> <a class="nav-link" href="/admin/orders-incomplete">Pending Orders</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/orders/process">Processing Order</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/orders-complete">Complete Orders</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="/orders/cancel">Cancelled Order</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/order/location">Update Location</a></li> --}}
+                <li class="nav-item"> <a class="nav-link" href="/orders/cancel">Cancelled Order</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="/order/location">Update Location</a></li> --}}
 
               </ul>
             </div>
@@ -269,7 +269,7 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('admin/assets//images/logo-mini.svg')}}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="/redirects"><img src="{{asset('admin/assets//images/logo-mini.svg')}}" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -277,9 +277,7 @@
             </button>
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
-                </form>
+
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
@@ -323,16 +321,8 @@
                   <p class="p-3 mb-0 text-center">See all projects</p>
                 </div>
               </li>
-              <li class="nav-item nav-settings d-none d-lg-block">
-                <a class="nav-link" href="#">
-                  <i class="mdi mdi-view-grid"></i>
-                </a>
-              </li>
-              <li class="nav-item dropdown border-left">
-                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-email"></i>
-                  <span class="count bg-success"></span>
-                </a>
+              
+             
 
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
@@ -393,7 +383,7 @@
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © RMS  2022</span>
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Novi Catering</span>
 
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="/" target="_blank">Go to Client Section</a></span>
             </div>

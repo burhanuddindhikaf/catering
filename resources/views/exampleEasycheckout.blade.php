@@ -46,8 +46,8 @@
             <ul class="list-group mb-3">
                
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (IDR)</span>
-                    <strong>{{ $total }}</strong>
+                    <span>Total</span>
+                    <strong>{{ "Rp. $total" }}</strong>
                 </li>
             </ul>
         </div>

@@ -902,6 +902,12 @@ ul.slick-dots {
 .slick-list:focus {
     outline: none;
 }
+
+/* Sembunyikan hanya scrollbar horizontal */
+::-webkit-scrollbar {
+    display: none; /* Hilangkan hanya scrollbar horizontal */
+}
+
 .slick-list.dragging {
     cursor: hand;
 }
@@ -1074,7 +1080,7 @@ menu
 
 #menu .price h6 {
     position: absolute;
-    width: 70px;
+    width: 120px;
     height: 70px;
     background-color: #fb5849;
     font-size: 20px;

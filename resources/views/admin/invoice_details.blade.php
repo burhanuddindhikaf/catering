@@ -138,7 +138,7 @@
 
                         @endforeach
 
-                        @foreach($extra_charge as $charge)
+                        {{-- @foreach($extra_charge as $charge)
                           <tr>
                            
                       
@@ -154,30 +154,14 @@
                       
                           </tr>
 
-                        @endforeach
+                        @endforeach --}}
+
+                        
 
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>Total </td>
-                            <td class="">  Rp. {{  $wihout_discount_price }}</td>                   
-                    
-                    
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Discount </td>
-                            <td class="">  Rp. {{  $discount_price }}</td>                   
-                    
-                    
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><h3>Total (With Discount)</h3> </td>
+                            <td><h3>Total </h3> </td>
                             <td class=""><h3>  Rp. {{  $total_price }} </h3></td>                   
                     
                     

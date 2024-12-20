@@ -716,8 +716,8 @@
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
                                     <h4>Nomor WhatsApp</h4>
-                                    <span><a href="#">01824072334</a>
-									<br><a href="#">01554649446</a>
+                                    <span><a href="https://wa.me/01824072334">01824072334</a>
+									<br><a href="https://wa.me/01554649446">01554649446</a>
 									</span>
                                 </div>
                             </div>
