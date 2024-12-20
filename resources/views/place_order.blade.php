@@ -31,13 +31,13 @@
 <body class="bg-light">
     <div class="container">
         <div class="py-5 text-center">
-            <h2>MidwayCafe</h2>
+            <h2>Novi Catering</h2>
         </div>
-    
+
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
+                    <span class="text-muted">Belanjaanmu</span>
                 </h4>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between">
@@ -47,19 +47,19 @@
                 </ul>
             </div>
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Shipping address</h4>
-                <form method="POST" action="{{ url('confirm_place_order/'.$total) }}" 
-      class="needs-validation" 
+                <h4 class="mb-3">Detail </h4>
+                <form method="POST" action="{{ url('confirm_place_order/'.$total) }}"
+      class="needs-validation"
       novalidate enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
         <label for="address">Alamat</label>
-        <input type="text" class="form-control" name="address" id="address" 
-               placeholder="alamat" 
+        <input type="text" class="form-control" name="address" id="address"
+               placeholder="alamat"
                 required>
         <div class="invalid-feedback">
-            Please enter your shipping address.
+            masukkan detail
         </div>
     </div>
 
@@ -78,12 +78,12 @@
     </div>
 
     <hr class="mb-4">
-    <button id="confirm-order-btn" class="btn btn-primary" disabled>Confirm order</button>
+    <button id="confirm-order-btn" class="btn btn-success" disabled>Confirm order</button>
 </form>
             </div>
         </div>
     </div>
-    
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -125,7 +125,7 @@
         form.addEventListener('input', function () {
             // Periksa apakah form valid
             const isFormValid = form.checkValidity();
-            
+
             // Aktifkan atau nonaktifkan tombol berdasarkan validasi form
             confirmOrderBtn.disabled = !isFormValid;
         });
