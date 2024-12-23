@@ -305,18 +305,18 @@ class AdminController extends Controller
         
     }
     public function menu_delete_process($id)
-    {
+{
+    // Hapus data di tabel 'rating' yang terkait dengan produk
+    DB::table('rates')->where('product_id', $id)->delete();
 
+    // Hapus data di tabel 'products'
+    $delete = DB::table('products')->where('id', $id)->delete();
 
+    // Set flash message
+    session()->flash('success', 'Menu deleted successfully!');
+    return back();
+}
 
-        $delete=DB::table('products')->where('id',$id)->delete();
-
-        session()->flash('success','Menu  deleted successfully !');
-        return back();
-
-
-
-    }
 
     public function chef_delete_process($id)
     {
